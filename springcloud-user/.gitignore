@@ -1,1 +1,11 @@
-/target/
+.idea
+*.iml
+*.out
+target/
+application.pid
+.classpath
+.project
+.settings/
+bin/
+
+.editorconfig
