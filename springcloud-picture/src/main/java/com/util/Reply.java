@@ -6,42 +6,77 @@ import lombok.Data;
 @Data
 public class Reply {
 
-    private State state;
+	private State state;
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	private Object data;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Object data;
+	public State getState() {
+		return state;
+	}
 
-    public Reply(int code, String message) {
-        state = new State();
-        state.stateCode = code;
-        state.stateMessage = message;
-    }
+	public void setState(State state) {
+		this.state = state;
+	}
 
-    @Data
-    private static class State {
+	public Object getData() {
+		return data;
+	}
 
-        private int stateCode;
+	public void setData(Object data) {
+		this.data = data;
+	}
 
-        private String stateMessage;
+	public Reply(int code, String message) {
+		state = new State();
+		state.stateCode = code;
+		state.stateMessage = message;
+	}
 
-    }
+	@Data
+	private static class State {
 
-    public Reply message(String message) {
-        state.stateMessage = message;
-        return this;
-    }
+		private int stateCode;
 
-    public Reply data(Object data) {
-        this.data = data;
-        return this;
-    }
+		private String stateMessage;
 
-    public static Reply success() {
-        return new Reply(0,"成功");
-    }
+		@SuppressWarnings("unused")
+		public int getStateCode() {
+			return stateCode;
+		}
 
-    public static Reply fail() {
-        return new Reply(1,"失败");
-    }
+		@SuppressWarnings("unused")
+		public void setStateCode(int stateCode) {
+			this.stateCode = stateCode;
+		}
+
+		@SuppressWarnings("unused")
+		public String getStateMessage() {
+			return stateMessage;
+		}
+
+		@SuppressWarnings("unused")
+		public void setStateMessage(String stateMessage) {
+			this.stateMessage = stateMessage;
+		}
+
+	}
+
+	public Reply message(String message) {
+		state.stateMessage = message;
+		return this;
+	}
+
+	public Reply data(Object data) {
+		this.data = data;
+		return this;
+	}
+
+	public static Reply success() {
+		return new Reply(0, "成功");
+	}
+
+	public static Reply fail() {
+		return new Reply(1, "失败");
+	}
 
 }
