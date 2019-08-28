@@ -1,79 +1,67 @@
 package com.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.aliyun.oss.OSSClient;
+import com.configure.AliyunOssProperties;
+import com.util.Reply;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.util.AliyunOSSUtil;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
 
-import net.sf.json.JSONObject;
-
-@Controller
-@RequestMapping("upload")
+@Controller("pictureUpload")
+@RequestMapping("/upload")
 public class UploadController {
-	private final org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
 
-	@RequestMapping(value = "uploadOss", method = RequestMethod.POST)
-	@ResponseBody
-	public String uploadBlog(@RequestParam MultipartFile[] file, HttpServletRequest request,
-			HttpServletResponse response) {
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
 
-		logger.info("============>文件上传");
-		JSONObject result = new JSONObject();
+    private static final String filePath = "james/";
 
-		try {
+    private AliyunOssProperties uploadProperties;
 
-			StringBuffer sb = new StringBuffer();
-			if (null != file && file.length > 0) {
-				for (int i = 0; i < file.length; i++) {
+    @Autowired
+    public void setUploadProperties(AliyunOssProperties uploadProperties) {
+        this.uploadProperties = uploadProperties;
+    }
 
-					MultipartFile f = file[i];
-					String filename = f.getOriginalFilename();
+    private OSSClient ossClient;
 
-					if (!"".equals(filename.trim())) {
-						File newFile = new File(filename);
-						FileOutputStream os = new FileOutputStream(newFile);
-						os.write(f.getBytes());
-						os.close();
-						f.transferTo(newFile);
-						// 上传到OSS
-						String uploadUrl = AliyunOSSUtil.upload(newFile);
-						sb.append(uploadUrl).append(",");
-						// if (newFile.exists() && newFile.isFile()) {
-						// newFile.delete();
-						// }
-					}
-				}
+    @Value("${aliyun.oss.upload-root-url}")
+    private String uploadRootUrl;
 
-				//String[] result1 = sb.substring(0, sb.length() - 1).split(",");
+    @Autowired
+    public void setOssClient(OSSClient ossClient) {
+        this.ossClient = ossClient;
+    }
 
-				result.put("code", 1);
-				result.put("message", "成功");
-				result.put("data", sb.substring(0, sb.length() - 1).split(","));
+    @PostMapping(value = "/uploadOss")
+    @ResponseBody
+    public Reply uploadBlog(@RequestParam MultipartFile[] file) throws IOException {
 
-				// return result.toString();
-				return result.toString();
+        StringBuilder sb = new StringBuilder();
+        if (file == null || file.length == 0)
+            return Reply.fail();
 
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		result.put("code", -1);
-		result.put("message", "失败");
-		result.put("data", "");
-		return result.toString();
-	}
+        for (MultipartFile f : file) {
+            logger.info("upload file size: " + f.getSize());
+
+            InputStream inputStream = f.getInputStream();
+            int a = Objects.requireNonNull(f.getOriginalFilename()).lastIndexOf(".");
+            String fileName = filePath + System.currentTimeMillis() + f.getOriginalFilename().substring(a);
+            ossClient.putObject(uploadProperties.getDefaultBucketName(), fileName, inputStream);
+            sb.append(uploadRootUrl).append(fileName).append(",");
+        }
+
+        return Reply.success().data(sb.substring(0, sb.length() - 1).split(","));
+
+    }
 
 }
