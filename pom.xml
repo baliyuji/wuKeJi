@@ -15,6 +15,7 @@
     <module>springcloud-eureka</module>
     <module>springcloud-common</module>
     <module>springcloud-user</module>
+    <module>springcloud-picture</module>
    </modules>
   <!-- spring-cloud所有项目依赖包 -->
   <dependencyManagement>
