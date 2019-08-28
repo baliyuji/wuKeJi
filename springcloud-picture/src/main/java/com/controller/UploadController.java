@@ -57,14 +57,14 @@ public class UploadController {
 					}
 				}
 
-				String[] result1 = sb.substring(0, sb.length() - 1).split(",");
+				//String[] result1 = sb.substring(0, sb.length() - 1).split(",");
 
 				result.put("code", 1);
 				result.put("message", "成功");
-				result.put("data", result1);
+				result.put("data", sb.substring(0, sb.length() - 1).split(","));
 
 				// return result.toString();
-				return sb.substring(0, sb.length() - 1);
+				return result.toString();
 
 			}
 		} catch (Exception ex) {
