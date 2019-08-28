@@ -54,17 +54,14 @@ public class UploadController {
 						// if (newFile.exists() && newFile.isFile()) {
 						// newFile.delete();
 						// }
-						System.out.println(sb.substring(0, sb.length() - 1));
 					}
-
 				}
 
 				String[] result1 = sb.substring(0, sb.length() - 1).split(",");
 
-				List list = new ArrayList<>();
 				result.put("code", 1);
 				result.put("message", "成功");
-				result.put("data", list);
+				result.put("data", result1);
 
 				// return result.toString();
 				return sb.substring(0, sb.length() - 1);
