@@ -17,7 +17,6 @@
     <module>springcloud-common</module>
     <module>springcloud-user</module>
     <module>springcloud-picture</module>
-    <module>aaa</module>
   </modules>
   <!-- spring-cloud所有项目依赖包 -->
   <dependencyManagement>
