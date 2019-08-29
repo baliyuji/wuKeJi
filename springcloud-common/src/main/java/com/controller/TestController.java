@@ -21,6 +21,6 @@ public class TestController {
 		Map map = new HashMap();
 		map.put("1", null);
 		
-		System.out.println(map.get(1));
+		System.out.println(map.get(1)); 
 	}
 }
