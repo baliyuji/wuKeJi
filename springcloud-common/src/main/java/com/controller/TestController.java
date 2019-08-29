@@ -20,7 +20,6 @@ public class TestController {
 		System.out.println("测试一下！！！");
 		Map map = new HashMap();
 		map.put("1", null);
-		
 		System.out.println(map.get(1)); 
 	}
 }
