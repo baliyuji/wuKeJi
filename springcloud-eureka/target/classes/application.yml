@@ -6,7 +6,7 @@ security:
         enable: true
     user: 
         name: admin
-        password: wukeji   
+        password: wukeji  
 eureka:
   instance:
     hostname: localhost

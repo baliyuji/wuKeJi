@@ -1,4 +1,4 @@
-package com.controller;
+package com.user.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mapper.UserMapper;
-import com.po.User;
+import com.user.mapper.UserMapper;
+import com.user.po.User;
+import com.user.util.Reply;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -19,11 +20,11 @@ public class UserController {
 
 	@PostMapping(value = "/findUser")
 	@ResponseBody
-	private User findUser(HttpServletRequest request) {
+	private Reply findUser(HttpServletRequest request) {
 
 		User user = userMapper.findUser("0327a822-8c77-418c-8813-7db296bd3d5d");
 
-		return user;
+		return Reply.success().data(user);
 
 	}
 }
