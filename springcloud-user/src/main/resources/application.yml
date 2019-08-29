@@ -4,35 +4,7 @@ server:
 spring:
   application:
     name: spring-cloud-user
-spring:
-  datasource:
-    user-server:
-      url: jdbc:mysql://127.0.0.1:3306/lmrp?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
-      username: root
-      password: wukeji
-      driver-class-name: com.mysql.jdbc.Driver
-      max-idle: 10
-      max-wait: 10000
-      min-idle: 5
-      initial-size: 5
-      validation-query: SELECT 1
-      test-on-borrow: false
-      test-while-idle: true
-      time-between-eviction-runs-millis: 18800
-    user-server-separate:
-      url: jdbc:mysql://127.0.0.1:3306/lmrp2?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
-      username: root
-      password: wukeji
-      driver-class-name: com.mysql.jdbc.Driver
-      max-idle: 10
-      max-wait: 10000
-      min-idle: 5
-      initial-size: 5
-      validation-query: SELECT 1
-      test-on-borrow: false
-      test-while-idle: true
-      time-between-eviction-runs-millis: 18800
-
+    
 #注册中心指向start    
 eureka:
   instance:
@@ -42,3 +14,17 @@ eureka:
     service-url: 
       defaultZone: http://admin:wukeji@127.0.0.1:8888/eureka/
 #注册中心指向end
+
+#spring:
+#  datasource:
+#    druid:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://127.0.0.1:3306/lmrp2?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+#      username: root
+#      password: wukeji
+##Mybatis配置
+#mybatis:
+#  #配置mapper xml文件所在的路径
+#  mapper-locations: classpath:mapper/*.xml
+#  #配置映射类所在的包名
+#  type-aliases-package: com.mapper      
