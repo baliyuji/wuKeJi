@@ -1,0 +1,26 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: spring-cloud-test
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/lmrp2?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+      username: root
+      password: wukeji
+security:
+    basic:
+        enabled: false
+#注册中心指向start    
+eureka:
+  instance:
+    instance-id: spring-cloud-test
+    appname: ${spring.application.name}
+  client: 
+    service-url: 
+      defaultZone: http://admin:wukeji@127.0.0.1:8888/eureka/
+#注册中心指向end
+
+  
