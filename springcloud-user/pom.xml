@@ -3,16 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.qsf.springcloud</groupId>
-		<artifactId>springcloud-root</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
+        <groupId>com.qsf.springcloud</groupId>
+        <artifactId>springcloud-root</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 	<artifactId>springcloud-user</artifactId>
 	<dependencies>
 		<!-- spring-cloud 客服端 start -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 		<!-- spring-cloud 客服端 end -->
 

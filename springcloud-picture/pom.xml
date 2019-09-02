@@ -11,7 +11,7 @@
         <!-- spring-cloud 客服端 start -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
         <!-- spring-cloud 客服端 end -->
 
