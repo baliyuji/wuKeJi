@@ -15,3 +15,8 @@ eureka:
     fetch-registry: false
     service-url: 
       defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+    registerWithEureka: false   
+    fetchRegistry: false  
+#feign:
+#  hystrix:
+#    enabled: true  
