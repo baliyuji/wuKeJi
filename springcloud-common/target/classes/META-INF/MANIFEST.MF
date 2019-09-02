@@ -4,8 +4,7 @@ Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: Administrator
 Implementation-Vendor-Id: com.qsf.springcloud
 Build-Jdk: 1.8.0_91
-Implementation-URL: http://projects.spring.io/spring-boot/springcloud-
- root/springcloud-common/
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/springcloud-root/springcloud-common
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
 
