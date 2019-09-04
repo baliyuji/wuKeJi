@@ -10,9 +10,9 @@ spring:
       url: jdbc:mysql://127.0.0.1:3306/lmrp2?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
       username: root
       password: wukeji
-security:
+  security:
     basic:
-        enabled: false
+      enable: false
 #注册中心指向start    
 eureka:
   instance:

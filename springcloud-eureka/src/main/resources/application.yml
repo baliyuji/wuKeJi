@@ -19,10 +19,5 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-    service-url: 
+    service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
-    registerWithEureka: false   
-    fetchRegistry: false  
-#feign:
-#  hystrix:
-#    enabled: true  
