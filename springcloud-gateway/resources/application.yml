@@ -7,7 +7,7 @@ spring:
   datasource:
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/lmrp2?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+      url: jdbc:mysql://127.0.0.1:3306/lmrp2?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
       username: root
       password: wukeji
   security:

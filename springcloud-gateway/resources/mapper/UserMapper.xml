@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.user.mapper.UserMapper">
+	<resultMap id="userResultMap" type="com.user.po.User">
+        <result column="id" property="id" />
+    </resultMap>
+
+ 	<sql id="userBaseColumnList">
+        id
+    </sql>
+
+    <select id="findUser" resultMap="userResultMap" parameterType="java.lang.String">
+        select
+			<include refid="userBaseColumnList" />
+        from 
+        	lm_user
+        where
+        	id = #{id} 
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
