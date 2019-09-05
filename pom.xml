@@ -18,8 +18,12 @@
 		<module>springcloud-user</module>
 		<module>springcloud-picture</module>
 		<module>springcloud-test</module>
+<<<<<<< HEAD
     <module>springcloud-gateway</module>
     <module>springcloud-gateway1</module>
+=======
+		<module>springcloud-geteway</module>
+>>>>>>> branch 'master' of https://github.com/baliyuji/wuKeJi.git
 	</modules>
 	<!-- spring-cloud所有项目依赖包 -->
 	<dependencyManagement>
