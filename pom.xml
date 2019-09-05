@@ -19,7 +19,8 @@
 		<module>springcloud-picture</module>
 		<module>springcloud-test</module>
     <module>springcloud-gateway</module>
-  </modules>
+    <module>springcloud-gateway1</module>
+	</modules>
 	<!-- spring-cloud所有项目依赖包 -->
 	<dependencyManagement>
 		<dependencies>
