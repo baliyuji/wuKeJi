@@ -12,12 +12,10 @@
 		<version>2.1.2.RELEASE</version>
 	</parent>
 	<modules>
-		<module>spring-register</module><!--注册中心项目 -->
 		<module>springcloud-eureka</module>
 		<module>springcloud-common</module>
 		<module>springcloud-user</module>
 		<module>springcloud-picture</module>
-		<module>springcloud-test</module>
 		<module>springcloud-geteway</module>
 	</modules>
 	<!-- spring-cloud所有项目依赖包 -->
